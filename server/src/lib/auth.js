@@ -10,11 +10,13 @@ export const auth = betterAuth({
     }),
     plugins: [
         deviceAuthorization({
+            verificationUri: "/device",
             expiresIn: "30m",
             interval: "5s",
         }),
     ],
     trustedOrigins: ["http://localhost:3000"],
+    basePath: "/api/auth",
     socialProviders: {
         github: {
             clientId: process.env.GITHUB_CLIENT_ID,

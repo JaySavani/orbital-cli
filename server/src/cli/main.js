@@ -2,9 +2,10 @@
 
 import dotenv from "dotenv";
 import { Command } from "commander";
-import { login } from "./commands/login.js";
 import chalk from "chalk";
 import figlet from "figlet";
+import { login, logout, whoami } from "./commands/login.js";
+
 
 dotenv.config();
 
@@ -28,6 +29,8 @@ async function main() {
 
     // Add commands
     program.addCommand(login);
+    program.addCommand(logout);
+    program.addCommand(whoami);
 
     // Default action shows help
     program.action(() => {
