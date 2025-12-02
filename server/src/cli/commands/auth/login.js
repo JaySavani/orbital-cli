@@ -11,7 +11,7 @@ import path from "path";
 import yoctoSpinner from "yocto-spinner";
 import * as z from "zod/v4";
 import dotenv from "dotenv";
-import prisma from "../../lib/db.js";
+import prisma from "../../../lib/db.js";
 
 dotenv.config();
 
