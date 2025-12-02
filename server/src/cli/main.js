@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { Command } from "commander";
 import chalk from "chalk";
 import figlet from "figlet";
-import { login, logout, whoami } from "./commands/login.js";
+import { login, logout, whoami } from "./commands/auth/login.js";
 import { wakeUp } from "./commands/ai/wakeUp.js";
 
 

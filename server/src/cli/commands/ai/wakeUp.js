@@ -4,6 +4,7 @@ import yoctoSpinner from "yocto-spinner";
 import { getStoredToken } from "../auth/login.js";
 import prisma from "../../../lib/db.js";
 import { select } from "@clack/prompts";
+import { startChat } from "../../chat/chat-with-ai.js";
 
 const wakeUpAction = async () => {
     const token = await getStoredToken();
@@ -62,7 +63,7 @@ const wakeUpAction = async () => {
 
     switch (choice) {
         case "chat":
-            console.log(chalk.yellow("Chat mode selected. (Not yet implemented)"));
+            startChat("chat")
             break;
         case "tool":
             console.log(chalk.yellow("Tool Calling mode selected. (Not yet implemented)"));
