@@ -1,6 +1,12 @@
 import { GithubIcon } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { authClient } from "@/lib/auth-client";
 
 export const LoginForm = () => {
@@ -22,7 +28,9 @@ export const LoginForm = () => {
                 onClick={() =>
                   authClient.signIn.social({
                     provider: "github",
-                    callbackURL: "http://localhost:3000",
+                    callbackURL:
+                      process.env.NEXT_PUBLIC_FRONTEND_URL ||
+                      "http://localhost:3000",
                   })
                 }
               >

@@ -11,7 +11,7 @@ const port = process.env.PORT || 3005;
 
 app.use(
     cors({
-        origin: "http://localhost:3000", // Replace with your frontend's origin
+        origin: process.env.FRONTEND_URL || "http://localhost:3000", // Replace with your frontend's origin
         methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
         credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     })
@@ -30,7 +30,7 @@ app.get("/api/me", async (req, res) => {
 
 app.get("/device", async (req, res) => {
     const { user_code } = req.query;
-    res.redirect(`http://localhost:3000/device?user_code=${user_code}`);
+    res.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/device?user_code=${user_code}`);
 })
 
 
