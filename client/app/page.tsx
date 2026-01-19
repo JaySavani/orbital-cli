@@ -287,7 +287,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => router.push("/sign-in")}
+              onClick={() =>
+                router.push(
+                  !isPending && data?.session && data?.user
+                    ? "/dashboard"
+                    : "/sign-in",
+                )
+              }
               className="rounded-full px-8"
             >
               Get Started Now
@@ -299,7 +305,7 @@ export default function Home() {
               onClick={() => {
                 // Link to documentation or GitHub
                 window.open(
-                  "https://github.com/yourusername/orbital-cli",
+                  "https://github.com/JaySavani/orbital-cli",
                   "_blank",
                 );
               }}
