@@ -1,6 +1,6 @@
 {
-  "name": "server",
-  "version": "1.0.0",
+  "name": "orbital-cli",
+  "version": "1.0.1",
   "main": "src/index.js",
   "bin": {
     "orbital": "src/cli/main.js"
@@ -9,12 +9,27 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
+    "postinstall": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "files": [
+    "src",
+    "prisma"
+  ],
+  "keywords": [
+    "cli",
+    "auth",
+    "ai",
+    "better-auth",
+    "device-flow"
+  ],
+  "author": "Jay Savani",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JaySavani/orbital-cli.git"
+  },
+  "description": "Better Auth powered device-flow authentication CLI with AI workspace",
   "dependencies": {
     "@ai-sdk/google": "^2.0.44",
     "@clack/prompts": "^0.11.0",
