@@ -196,7 +196,7 @@ export async function loginAction(opts) {
         console.log("");
         console.log(
             `Please visit: ${chalk.underline.blue(
-                verification_uri_complete || verification_uri
+                verification_uri || verification_uri_complete
             )}`
         );
         console.log(`Enter code: ${chalk.bold.green(user_code)}`);
@@ -296,9 +296,9 @@ async function pollForToken(authClient, deviceCode, clientId, initialInterval) {
                 });
 
                 if (data?.access_token) {
-                    console.log(
-                        chalk.bold.yellow(`Your access token: ${data.access_token}`)
-                    );
+                    // console.log(
+                    //     chalk.bold.yellow(`Your access token: ${data.access_token}`)
+                    // );
                     spinner.stop();
                     resolve(data);
                     return;
