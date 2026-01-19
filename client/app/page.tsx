@@ -1,14 +1,30 @@
 "use client";
 
+import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Code2, GitBranch, LogOut, MessageCircle, Zap } from "lucide-react";
+import {
+  Check,
+  Code2,
+  Copy,
+  GitBranch,
+  LogOut,
+  MessageCircle,
+  Zap,
+} from "lucide-react";
 import { LogoSVG } from "./svgs/logo";
 
 export default function Home() {
   const { data, isPending } = authClient.useSession();
   const router = useRouter();
+  const [hasCopied, setHasCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("npm i orbital-cli");
+    setHasCopied(true);
+    setTimeout(() => setHasCopied(false), 1000);
+  };
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -216,20 +232,16 @@ export default function Home() {
             <div className="flex items-center gap-3 text-lg font-mono">
               <span className="text-muted-foreground">$</span>
               <span className="text-foreground">npm i orbital-cli</span>
-              <button className="ml-4 p-2 hover:bg-secondary rounded-lg transition-colors">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                  />
-                </svg>
+              <button
+                onClick={handleCopy}
+                className="ml-4 p-2 hover:bg-secondary rounded-lg transition-colors"
+                aria-label="Copy installation command"
+              >
+                {hasCopied ? (
+                  <Check className="w-5 h-5 text-green-500" />
+                ) : (
+                  <Copy className="w-5 h-5" />
+                )}
               </button>
             </div>
           </div>
