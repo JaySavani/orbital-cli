@@ -17,12 +17,12 @@ export const auth = betterAuth({
     ],
     trustedOrigins: [process.env.FRONTEND_URL || "http://localhost:3000"],
     basePath: "/api/auth",
-    advanced: {
+    advanced: process.env.NODE_ENV === "production" ? {
         crossSubDomainCookies: {
             enabled: true,
             domain: "jaysavani.site"
         },
-    },
+    } : undefined,
     socialProviders: {
         github: {
             clientId: process.env.GITHUB_CLIENT_ID,

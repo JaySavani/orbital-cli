@@ -29,8 +29,8 @@ app.get("/api/me", async (req, res) => {
 });
 
 app.get("/device", async (req, res) => {
-    const { user_code } = req.query;
-    res.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/device?user_code=${user_code}`);
+    // const { user_code } = req.query;
+    res.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/device`);
 })
 
 
